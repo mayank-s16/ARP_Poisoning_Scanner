@@ -29,9 +29,9 @@ def updateHistory(packet):
 
 def resetFromHistory(ip, hw):
 	print("need to update", ip,"=", history[ip])
-	for i in range(len(history[ip])-1, -1,-1):
-		if(history[ip][i] != hw):
-			os.system("arp -s "+ip+" "+history[ip][i])
+	if(history[ip][0] != hw):
+		os.system("arp -s "+ip+" "+history[ip][0])
+		print("arp compromised ", ip, hw)
 	
 
 def get_mac(ip):
